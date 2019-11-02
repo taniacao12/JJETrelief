@@ -107,6 +107,7 @@ def get_watchlist(user):
     db.close()
     return watchlist_data
 
+# create_tables()
 # add_watchlist("joyce","gz",30,20)
 # add_watchlist("joyce","gz",20,30)
 # add_watchlist("joyce","gz",20,30)
