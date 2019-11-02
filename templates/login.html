@@ -1,0 +1,27 @@
+{% extends "parent.html" %}
+
+{% block content %}
+<div class="userInfo">
+  <!--Able to login by submitting existing user/pass or make new account by pressing "register"-->
+  <form action="/auth" method="POST">
+    <div class="form-group">
+      <label class="control-label" for="username">Username</label>
+      <input type="text" name="username" class="form-control" id="username">
+    </div>
+    <div class="form-group">
+      <label class="control-label" for="password">Password</label>
+      <input type="password" name="password" class="form-control" id="password">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn col-sm-2 text-white" style="background-color: #8192d9;" id="account" name = {{type}} value = "Login">Login</button>
+    </div>
+  </form>
+  
+  <br>
+  
+  <p> Not a member? Register <a href="/register">here</a>. </p>
+  <div class="center">
+    <a class="btn text-white" style="background-color: #8192d9;" href="/" id="account">Return</a>
+  </div>
+</div>
+{% endblock %}

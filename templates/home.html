@@ -1,0 +1,16 @@
+{% extends "parent.html" %}
+
+{% block content %}
+<div class="text-center">
+  <h4>Average Temperature by County</h4>
+  <div class="slidercontainer">
+    <input type="range" min="1900" max="2010" value="2010" class="slider" id="year">
+  </div>
+  <div class="yearcontainer">
+    <p id="current_year"></p>
+  </div>
+  <h3 id="loading">Loading...</h3>
+  <svg id="landing_map" width="960" height="600" style="margin-left: 90px;"></svg>
+  <svg id="mapLegend" width="140" height="300"></svg>
+</div>
+{% endblock %}

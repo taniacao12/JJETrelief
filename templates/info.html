@@ -1,0 +1,61 @@
+{% extends "parent.html" %}
+
+{% block content %}
+<div class="row text-center">
+  <div class="col">
+    <div id="map"></div>
+  </div>
+  <div class="col">
+    <div style="text-align:center">
+    {% for each in weather_data["conditions"] %}
+    <img src="http://openweathermap.org/img/w/{{each['icon']}}.png" width="100px" height="100px">
+    <span style="text-transform: capitalize;">{{each["description"]}}</span>
+    <br>
+    {% endfor %}
+    <p>Current Temp: {{weather_data["curr_temp"]}} &deg;F<br>
+    Daily Lowest: {{weather_data["low_temp"]}} &deg;F<br>
+    Daily Highest: {{weather_data["high_temp"]}} &deg;F<br>
+    Humidity: {{weather_data["humidity"]}}%<br>
+    Wind Speed: {{weather_data["wdsp"]}} mph</p>
+    </div>
+    <br>
+    {% if logged_in %}
+    <form action = "/change_wl">
+      <div class="form-group">
+        <input type="hidden" name="city" value="{{city}}">
+        <input type="hidden" name="state" value="{{state}}">
+        <input type="hidden" name="county" value="{{county}}">
+	    <input type="hidden" name="lat" value={{lat}}>
+	    <input type="hidden" name="long" value={{long}}>
+        <input type="hidden" name="page" value="info">
+        {% if not on_watchlist %}
+        <button type="submit" class="btn btn-outline-secondary btn-sm" name = "update" value = "Add to watchlist">Add to Watchlist</button>
+        {% else %}
+        <button type="submit" class="btn btn-outline-secondary btn-sm" name = "update" value = "Remove from watchlist">Remove from Watchlist</button>
+        {% endif %}
+      </div>
+    </form>
+    {% endif %}
+  </div>
+</div>
+
+<div id="graph_container">
+    <svg class="text-center" id="t_graph"></svg>
+</div>
+
+<div id="graph_container">
+    <svg class="text-center" id="p_graph"></svg>
+</div>
+
+<script> var latitude = {{lat}};
+  var longitude = {{long}};
+  var loc = "{{city}}";
+  var data = {{tavg_data | safe}};
+  var p_data = {{prcp_data | safe}};
+</script>
+
+<!-- <script type="text/javascript" src="../keys/locationiq.json"></script> -->
+<script src="../static/map.js"></script>
+<script src="http://d3js.org/d3.v5.min.js"></script>
+<script src="../static/charts.js"></script>
+{% endblock %}

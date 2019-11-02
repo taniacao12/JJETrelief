@@ -1,0 +1,31 @@
+{% extends "parent.html" %}
+
+{% block content %}
+<div class="userInfo">
+  <!--Post hides info from url. Makes sure user doesn't already exist & password matches confirm -->
+  <form action="/adduser">
+    <div class="form-group">
+      <label for="new_user">Username</label>
+      <input type="text" name="user" class="form-control" id="new_user">
+    </div>
+    <div class="form-group">
+      <label for="new_pw">Password</label>
+      <input type="password" name="password" class="form-control" id="new_pw">
+    </div>
+    <div class="form-group">
+      <label for="confirm_pw">Confirm Password</label>
+      <input type="password" name="confirm_password" class="form-control" id="confirm_pw">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn text-white col-sm-2" style="background-color: #8192d9;" id="account">Register</button>
+    </div>
+  </form>
+
+  <br>
+
+  <p> Already a member? Login <a href="/login">here</a>. </p>
+  <div class="center">
+    <a class="btn text-white" style="background-color: #8192d9;" href="/" id="account">Return</a>
+  </div>
+</div>
+{% endblock %}
