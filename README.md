@@ -1,5 +1,7 @@
-# Climate Crackers
-### Team JJETrelief - Tania Cao, Joyce Fang, Jody Sunray, Elaine Shi
+# JJETrelief
+
+## Team
+Tania Cao, Joyce Fang, Jody Sunray, Elaine Shi
 
 ## Project Overview
 Description
