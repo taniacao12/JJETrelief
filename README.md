@@ -1,5 +1,5 @@
 # Climate Crackers
-### Team JJETrelief - Tania Cao, Joyce Fang, Jodi, Elaine Shi
+### Team JJETrelief - Tania Cao, Joyce Fang, Jody Sunray, Elaine Shi
 [Live link](http://climatecrackers.stuycs.org/)
 #### Roster and Roles
 * Puneet Johal (PM, d3)
