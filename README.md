@@ -1,14 +1,8 @@
 # Climate Crackers
 ### Team JJETrelief - Tania Cao, Joyce Fang, Jody Sunray, Elaine Shi
-[Live link](http://climatecrackers.stuycs.org/)
-#### Roster and Roles
-* Puneet Johal (PM, d3)
-* Tania Cao (Frontend, styling)
-* Joyce Liao (Backend, d3)
-* Sophia Xia (Backend, data)
 
 ## Project Overview
-Climate Crackers is a data visualization website that allows users to explore trends in climate change in the U.S. Our landing page will be a map of the U.S. showing the percent change of the average temperatures from previous years using a color gradient. Users will be able to pick a season and year. Users will also be able to input a location (city or town name) to search for the corresponding climate data, like average temperatures and days of precipitation for each year in the past century. If the user is signed in, they will be able to save these locations onto their watchlist.
+Description
 
 ### Launch Instructions
 #### Install and run on localhost
@@ -19,12 +13,12 @@ Climate Crackers is a data visualization website that allows users to explore tr
    * Make a venv by running `$ python3 -m venv path_to_venv`
    * Activate it by running `$ . /path_to_venv/bin/activate`
    * Deactivate it by running `$ deactivate`
-5. Move into the climatecrackers directory: `$ cd climatecrackers/`
+5. Move into the JJETrelief directory: `$ cd JJETrelief/`
 6. **With your virtual environment activated**, download all of the app's dependencies by running
 ```
  (venv)$ pip install -r requirements.txt
 ```
-7. Run `$ python __init__.py`
+7. Run `$ python app.py`
 8. Launch the root route (http://127.0.0.1:5000/) in your browser to go to the login page.
 
 #### API information
@@ -43,5 +37,3 @@ Climate Crackers is a data visualization website that allows users to explore tr
 ##### OpenWeatherMap
 * Provides current weather conditions in a location
 * Sign up [here](https://home.openweathermap.org/users/sign_up) for an API key
-
-ejviwvjilvj
