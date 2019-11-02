@@ -4,7 +4,10 @@
 Tania Cao, Joyce Fang, Jody Sunray, Elaine Shi
 
 ## Project Overview
-Description
+* Focused on underrepresented communities affected by natural disaster
+* Real time updates on those communities
+* Donation option, connections to pre-existing volunteer groups
+* Customize what you see based on disaster type, magnitude, location, types of aid, etc
 
 ### Launch Instructions
 #### Install and run on localhost
