@@ -10,9 +10,9 @@ app.secret_key = "super secret key"
 @app.route("/")
 def home():
 	if "logged_in" in session:
-		data = db.get_watchlist(session["logged_in"])
+		data = db.get_donations(session["logged_in"])
 		return render_template("home.html", title = "Home", heading = "Hello " + session["logged_in"] + "!", user = session["logged_in"], logged_in = True)
-	return render_template("home.html", title = "Home", heading = "Hello Guest!", logged_in = False)
+	return render_template("home.html", title = "Home", logged_in = False)
 
 # ================Accounts================
 @app.route("/auth", methods = ["GET", "POST"])
@@ -104,7 +104,22 @@ def load_info():
 @app.route("/donate")
 def donate():
 	status = "logged_in" in session
-	return render_template("donate.html", title = "Donate", heading = "Donate", logged_in = status)
+	if status:
+		return render_template("donate.html", title = "Donate", heading = "Donate", logged_in = status)
+	else:
+		flash ("Please login to donate")
+		return render_template("login.html", title = "Login", heading = "Login")
+
+@app.route("/donations")
+def getDonations():
+	status = "logged_in" in session
+	if status:
+		data = db.get_donations(session["logged_in"])
+		#print(locations)
+		return render_template("donations.html", title = "Donations", heading = "Donations", content = data, logged_in = status)
+	else:
+		flash ("Please login to view Watchlist")
+		return render_template("login.html", title = "Login", heading = "Login")
 
 # ================partnerships================
 @app.route("/partnerships")
