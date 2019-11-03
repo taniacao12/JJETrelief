@@ -93,24 +93,26 @@ def load_info():
 	endDate = datetime(int(date[0]), int(date[1]), int(date[2]))
 	startDate = endDate - timedelta(1)
 	date = endDate.strftime("%Y-%m-%d")
+	display = endDate.strftime("%A, %b %d %Y")
 	startDate = startDate.strftime("%Y-%m-%d")
 	try:
 		data = disaster.getDate(startDate, date)
 	except:
 		flash("Sorry, an error has occurred while retrieving information.")
 		return redirect(url_for("home"))
-	return render_template("info.html", title = "Earthquakes from " + date, heading = "Earthquakes from " + date, date = endDate, d = date, content = data, logged_in = status)
+	return render_template("info.html", title = "Earthquakes from " + display, heading = "Earthquakes from " + display, display = display, date = endDate, d = date, content = data, logged_in = status)
 
 # ================donate================
 @app.route("/donate")
 def donate():
 	status = "logged_in" in session
 	if status:
+		display = request.args["display"]
 		date = request.args["date"]
 		d = request.args["d"]
 		place = request.args["place"]
 		mag = request.args["mag"]
-		return render_template("donate.html", title = "Donate", heading = "Donate", date = date, d = d, place = place, mag = mag, logged_in = status)
+		return render_template("donate.html", title = "Donate", heading = "Donate", display = display, date = date, d = d, place = place, mag = mag, logged_in = status)
 	else:
 		flash ("Please login to donate")
 		return render_template("login.html", title = "Login", heading = "Login")
