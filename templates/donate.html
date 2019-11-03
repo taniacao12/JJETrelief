@@ -1,0 +1,9 @@
+{% extends "parent.html" %}
+
+{% block content %}
+Donate to [whatever thing you clicked on before]
+<div class="form-group">
+  <label for="donation">How much do you want to donate?</label>
+  <input type="number" min="0.00" name="amount" class="form-control col-sm-10" id="amount" placeholder=100.00 step="0.01">
+</div>
+{% endblock %}

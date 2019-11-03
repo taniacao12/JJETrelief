@@ -95,6 +95,11 @@ def load_info():
 		return redirect(url_for("home"))
 	return render_template("info.html", content = data, logged_in = status)
 
+# ================donate================
+@app.route("/donate")
+def donate():
+	return render_template("donate.html", title = "Donate", heading = "Donate")
+
 if __name__ == "__main__":
         app.debug = True
         app.run()

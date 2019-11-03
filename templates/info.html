@@ -2,10 +2,16 @@
 
 {% block content %}
 
+<style>
+    b {
+        color: lightblue;
+    }
+</style>
+
 {% for each in content%}
-Location: {{each}}
+<b>Location:</b> {{each}}
 <br>
-Magnitude: {{content.get(each)}}
+<b>Magnitude:</b> {{content.get(each)}}
 <br><br>
 
 <div class="table-responsive">
