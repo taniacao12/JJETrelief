@@ -5,6 +5,7 @@ from util import db, disaster
 from datetime import datetime, date, timedelta
 
 app = Flask(__name__)
+app.secret_key = "super secret key"
 
 @app.route("/")
 def home():
@@ -77,33 +78,37 @@ def load_current():
 	except:
 		flash("Sorry, an error has occurred while retriving information.")
 		return redirect(url_for("home"))
+<<<<<<< HEAD
 	return render_template("info.html", content = data, logged_in = status, title = "Today's Earthquakes", heading = "Earthquakes from " + str(current))
+=======
+	return render_template("info.html", title = "Today", heading = "Earthquakes from " + str(current), content = data, logged_in = status)
+>>>>>>> 762f3e27b0f54563d2449bc6bb7116f60e397273
 
 # ================info================
 @app.route("/search")
 def load_info():
 	status = "logged_in" in session
-	month = int(request.args["month"])
-	day = int(request.args["day"])
-	year = int(request.args["year"])
-	endDate = datetime(year, month, day)
+	date = request.args["date"].split('-')
+	print(date)
+	if (date == ['']):
+		flash ("Please enter a date")
+		return render_template("home.html", title = "Try Again", heading = "Please Try Again", logged_in=status)
+	endDate = datetime(int(date[0]), int(date[1]), int(date[2]))
 	startDate = endDate - timedelta(1)
+	endDate = endDate.strftime("%x")
+	startDate = startDate.strftime("%x")
 	try:
 		data = disaster.getDate(startDate, endDate)
 	except:
 		flash("Sorry, an error has occurred while retriving information.")
 		return redirect(url_for("home"))
-	return render_template("info.html", content = data, logged_in = status)
+	return render_template("info.html", title = "Earthquakes from " + endDate, heading = "Earthquakes from " + endDate, content = data, logged_in = status)
 
 # ================donate================
 @app.route("/donate")
 def donate():
-	return render_template("donate.html", title = "Donate", heading = "Donate")
-
-# ================donate================
-@app.route("/partnerships")
-def partnership():
-	return render_template("/partnerships.html", title = "Our Partners", heading = "Our Partners")
+	status = "logged_in" in session
+	return render_template("donate.html", title = "Donate", heading = "Donate", logged_in = status)
 
 if __name__ == "__main__":
         app.debug = True
