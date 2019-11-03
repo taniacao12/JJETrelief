@@ -25,18 +25,5 @@ JJETrelief focuses on underrepresented communities affected by natural disasters
 8. Launch the root route (http://127.0.0.1:5000/) in your browser to go to the login page.
 
 #### API information
-##### LocationIQ
-* Generate a dynamic map on the information page for each selected location
-* Sign up for an account [here](https://locationiq.com/docs) to acquire an access token
-##### MapQuest
-* Provide coordinates of a city based on its name
-* Register [here](https://developer.mapquest.com/plan_purchase/steps/business_edition/business_edition_free/register) to obtain a key; note the callback url field is optional
-##### Climate Data Online
-* Provides historical weather and climate data
-* Request a token [here](https://www.ncdc.noaa.gov/cdo-web/token)
-##### ipstack
-* Provides location based on IP address
-* Sign up [here](https://ipstack.com/signup/free) for an API key
-##### OpenWeatherMap
-* Provides current weather conditions in a location
-* Sign up [here](https://home.openweathermap.org/users/sign_up) for an API key
+##### GeoJSON
+*  [GeoJSON](https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) is a format for encoding a variety of geographic data structures. A GeoJSON object may represent a geometry, a feature, or a collection of features.
