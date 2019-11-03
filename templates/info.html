@@ -2,11 +2,32 @@
 
 {% block content %}
 
-{% for each in content%}
-<b>Location:</b> {{each}}
-<br>
-<b>Magnitude:</b> {{content.get(each)}}
-<br><br>
-{% endfor %}
+<style>
+    b {
+        color: lightblue;
+    }
+</style>
 
+<div class="table-responsive">
+  <table class="table table-hover text-center" width="100%">
+      <thead>
+        <tr class="bg-dark text-white">
+            <th style="width:40%">Location</th>
+            <th>Mag.</th>
+            <th>Current Funding</th>
+            <th style="width:20%">Make a Donation</th>
+        </tr>
+      </thead>
+    <tbody>
+      {% for each in content %}
+      <tr>
+        <td><div align="left">{{ each }}</div></td>
+        <td> {{content.get(each)}}</td>
+        <td>$0.00</td>
+        <td><a style="background-color:lightblue" class="btn btn-sm btn-outline-dark" href="/donate" role="button">Donate</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock %}
