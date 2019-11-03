@@ -1,12 +1,10 @@
 import os
-
 from flask import Flask, render_template, request, flash, session, url_for, redirect
+from util import db, disaster
 
-from util import db
+from datetime import date, timedelta
 
 app = Flask(__name__)
-
-app.secret_key=os.getenv('SECRET_KEY', 'for dev')
 
 @app.route("/")
 def home():
@@ -68,6 +66,36 @@ def logout():
 	if session.get("logged_in"):
 		session.pop("logged_in")
 	return redirect(url_for("home"))
+
+@app.route("/current")
+def load_current():
+	status = "logged_in" in session
+	current = date.today()
+	prev = current - timedelta(1)
+	try:
+		data = disaster.getDate(prev, current)
+	except:
+		flash("Sorry, an error has occurred while retriving information.")
+		return redirect(url_for("home"))
+#    if "logged_in" in session:
+#        on_watchlist = db.check_watchlist(session["logged_in"], city, county, state, lat, longi)
+	return render_template("info.html", content = data, logged_in = status)
+
+# ================info================
+@app.route("/info")
+def load_info():
+    status = "logged_in" in session
+    try:
+        data = disaster.getDate(startDate, endDate)
+    except:
+        flash("Sorry, an error has occurred while retriving information.")
+        return redirect(url_for("home"))
+    #avg_temp = data[0]
+    #precip = data[1]
+    #on_watchlist = False
+    #if "logged_in" in session:
+    #    on_watchlist = db.check_watchlist(session["logged_in"], city, county, state, lat, longi)
+    return render_template("info.html", title = startDate + " to " + endDate, heading = startDate + " to " + endDate, logged_in = status)
 
 if __name__ == "__main__":
         app.debug = True
