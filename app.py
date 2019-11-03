@@ -85,7 +85,6 @@ def load_current():
 def load_info():
 	status = "logged_in" in session
 	date = request.args["date"].split('-')
-	print(date)
 	if (date == ['']):
 		flash ("Please enter a date")
 		return render_template("home.html", title = "Try Again", heading = "Please Try Again", logged_in=status)
@@ -98,14 +97,18 @@ def load_info():
 	except:
 		flash("Sorry, an error has occurred while retriving information.")
 		return redirect(url_for("home"))
-	return render_template("info.html", title = "Earthquakes from " + endDate, heading = "Earthquakes from " + endDate, content = data, logged_in = status)
+	print(endDate)
+	return render_template("info.html", title = "Earthquakes from " + endDate, heading = "Earthquakes from " + endDate, date = endDate, content = data, logged_in = status)
 
 # ================donate================
 @app.route("/donate")
 def donate():
 	status = "logged_in" in session
 	if status:
-		return render_template("donate.html", title = "Donate", heading = "Donate", logged_in = status)
+		date = request.args["date"]
+		place = request.args["place"]
+		mag = request.args["mag"]
+		return render_template("donate.html", title = "Donate", heading = "Donate", date = date, place = place, mag = mag, logged_in = status)
 	else:
 		flash ("Please login to donate")
 		return render_template("login.html", title = "Login", heading = "Login")
@@ -120,6 +123,21 @@ def getDonations():
 	else:
 		flash ("Please login to view Watchlist")
 		return render_template("login.html", title = "Login", heading = "Login")
+
+@app.route("/change_donations", methods = ["GET", "POST"])
+def change_donations():
+	try:
+		place = request.args["place"]
+		mag = request.args["mag"]
+		amt = request.args["amount"]
+		print(place)
+		print(mag)
+		print(amt)
+		db.add_donations(session["logged_in"], place, mag, amt)
+	except:
+		flash("failed to add location to database")
+	date = request.args["date"]
+	return redirect(url_for("load_info", date = date))
 
 # ================partnerships================
 @app.route("/partnerships")

@@ -2,9 +2,18 @@
 
 {% block content %}
 <div align="center" style="padding:15px"><img src="https://www.mercycorps.org/sites/default/files/Paridhi%20KASALA.jpg" class="img-fluid" style="border:black 2px solid;width:70%"><br>
+	{{place}}<br>
+	{{mag}}<br>
+	{{date}}
 	How much will you donate?
+	<form action = "/change_donations">
 	<div class="form-group">
-	  <input style="float:right" type="submit" value="Donate" role="button" class="btn btn-outline-dark"><input type="number" min="0.00" name="amount" class="form-control col-sm-5" id="amount" placeholder=100.00 step="0.01">
+		<input type="hidden" name="place" value="{{place}}">
+		<input type="hidden" name="mag" value="{{mag}}">
+		<input type="hidden" name="date" value="{{date}}">
+		<input type="number" min="0.00" name="amount" class="form-control col-sm-5" placeholder=100.00 step="0.01">
+		<input style="float:right" type="submit" value="Donate" role="button" class="btn btn-outline-dark">
 	</div>
+	</form>
 </div>
 {% endblock %}

@@ -12,12 +12,13 @@
         </tr>
       </thead>
     <tbody>
+      {{date}}
       {% for each in content %}
       <tr>
         <td><div align="left">{{ each }}</div></td>
         <td> {{content.get(each)}}</td>
         <td>$0.00</td>
-        <td><a style="background-color:lightblue" class="btn btn-sm btn-outline-dark" href="/donate" role="button">Donate</a></td>
+        <td><a style="background-color:lightblue" class="btn btn-sm btn-outline-dark" href="/donate?date={{date}}&place={{each}}&mag={{content.get(each)}}" role="button">Donate</a></td>
       </tr>
       {% endfor %}
     </tbody>
