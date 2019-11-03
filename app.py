@@ -73,6 +73,7 @@ def load_current():
 	status = "logged_in" in session
 	current = date.today()
 	prev = current - timedelta(1)
+	display = current.strftime("%A, %b %d %Y")
 	d = current.strftime("%Y-%m-%d")
 	prev = prev.strftime("%Y-%m-%d")
 	try:
@@ -80,7 +81,7 @@ def load_current():
 	except:
 		flash("Sorry, an error has occurred while retrieving information.")
 		return redirect(url_for("home"))
-	return render_template("info.html", date = current, content = data, logged_in = status, title = "Today's Earthquakes", heading = "Earthquakes from " + d)
+	return render_template("info.html", display = display, date = current, content = data, logged_in = status, title = "Today's Earthquakes", heading = "Earthquakes from " + d)
 
 # ================info================
 @app.route("/search")
