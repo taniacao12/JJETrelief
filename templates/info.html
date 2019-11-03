@@ -3,7 +3,12 @@
 {% block content %}
 
 {% for each in content%}
-location: {{each}}
+<script>
+    var each = each;
+    each.split('-')
+</script>
+
+location: {{each[1]}}
 <br>
 magnitude: {{content.get(each)}}
 <br><br>
