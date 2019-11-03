@@ -96,6 +96,18 @@ def get_donations(user):
     db.close()
     return data
 
+def get_funding(place):
+    """Get all the donations city for the user."""
+    db = sqlite3.connect(DB_FILE)
+    c = db.cursor()
+
+    sum = 0
+    for each in c.execute("SELECT * FROM donations WHERE place =?", (place,)):
+        sum += each[3]
+
+    db.close()
+    return sum
+
 # create_tables()
 # add_donations("joyce","gz",30,20)
 # add_donations("joyce","gz",20,30)

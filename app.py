@@ -78,6 +78,8 @@ def load_current():
 	prev = prev.strftime("%Y-%m-%d")
 	try:
 		data = disaster.getDate(prev, current)
+		for each in data:
+			data[each].append(db.get_funding(each))
 	except:
 		flash("Sorry, an error has occurred while retrieving information.")
 		return redirect(url_for("home"))
@@ -97,6 +99,8 @@ def load_info():
 	startDate = startDate.strftime("%Y-%m-%d")
 	try:
 		data = disaster.getDate(startDate, date)
+		for each in data:
+			data[each].append(db.get_funding(each))
 	except:
 		flash("Sorry, an error has occurred while retrieving information.")
 		return redirect(url_for("home"))

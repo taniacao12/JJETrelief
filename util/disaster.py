@@ -18,5 +18,6 @@ def getDate(start, end):
     response = urllib.request.urlopen(req)
     data = json.loads(response.read())
     for each in data['features']:
-        ret_dict[each['properties']['title']] = each['properties']['mag']
+        list = [each['properties']['mag']]
+        ret_dict[each['properties']['title']] = list
     return ret_dict
