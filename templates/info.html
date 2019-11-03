@@ -14,7 +14,7 @@
     <tbody>
       {% for each in content %}
       <tr>
-        <td><div align="left">{{ each }}</div></td>
+        <td><div align="left">{{ each[each.index("of")+3:] }}</div></td>
         <td> {{content[each][0]}}</td>
         <td>${{content[each][1]}}</td>
         <td><a style="background-color:lightblue" class="btn btn-sm btn-outline-dark" href="/donate?display={{display}}&date={{date}}&d={{d}}&place={{each}}&mag={{content.get(each)}}" role="button">Donate</a></td>

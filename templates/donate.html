@@ -3,7 +3,7 @@
 {% block content %}
 <div align="center">
 	<div style="padding:15px;width:70%;"><img src="static/forest.jpg" class="img-fluid" style="border:black 2px solid;"><br>
-	Thank you for choosing to donate to the people of {{place[place.index("of")+3:]}}. On {{display}}, they suffered an earthquake of magnitude {{mag}}.<br><br>
+	Thank you for choosing to donate to the people of {{place[place.index("of")+3:]}}. On {{display}}, they suffered an earthquake of magnitude {{mag[1:mag.index(",")]}}.<br><br>
 	How much will you donate?<br>
 	<form action = "/change_donations">
 	<div class="form-group">
