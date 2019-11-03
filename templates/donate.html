@@ -1,10 +1,10 @@
 {% extends "parent.html" %}
 
 {% block content %}
-<div align="center" style="padding:15px"><img src="https://www.mercycorps.org/sites/default/files/Paridhi%20KASALA.jpg" class="img-fluid" style="border:black 2px solid;width:70%">
+<div align="center" style="padding:15px"><img src="https://www.mercycorps.org/sites/default/files/Paridhi%20KASALA.jpg" class="img-fluid" style="border:black 2px solid;width:70%"><br>
+	How much will you donate?
 	<div class="form-group">
-	  <label for="donation">How much will you donate?</label>
-	  <input type="number" min="0.00" name="amount" class="form-control col-sm-5" id="amount" placeholder=100.00 step="0.01">
+	  <input style="float:right" type="submit" value="Donate" role="button" class="btn btn-outline-dark"><input type="number" min="0.00" name="amount" class="form-control col-sm-5" id="amount" placeholder=100.00 step="0.01">
 	</div>
 </div>
 {% endblock %}
