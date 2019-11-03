@@ -13,7 +13,7 @@
       {% for each in content %}
       <tr>
         <td>{{each[2]}}</td>
-        <td>{{each[0][each[0].index("of")+3:]}}</td>
+        <td>{{each[0][each[0].find("-")+1:]}}</td>
       </tr>
       {% endfor %}
     </tbody>
