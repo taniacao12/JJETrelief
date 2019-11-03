@@ -2,7 +2,7 @@ import os
 from flask import Flask, render_template, request, flash, session, url_for, redirect
 from util import db, disaster
 
-from datetime import date, timedelta
+from datetime import datetime, date, timedelta
 
 app = Flask(__name__)
 
@@ -77,25 +77,23 @@ def load_current():
 	except:
 		flash("Sorry, an error has occurred while retriving information.")
 		return redirect(url_for("home"))
-#    if "logged_in" in session:
-#        on_watchlist = db.check_watchlist(session["logged_in"], city, county, state, lat, longi)
 	return render_template("info.html", content = data, logged_in = status)
 
 # ================info================
-@app.route("/info")
+@app.route("/search")
 def load_info():
-    status = "logged_in" in session
-    try:
-        data = disaster.getDate(startDate, endDate)
-    except:
-        flash("Sorry, an error has occurred while retriving information.")
-        return redirect(url_for("home"))
-    #avg_temp = data[0]
-    #precip = data[1]
-    #on_watchlist = False
-    #if "logged_in" in session:
-    #    on_watchlist = db.check_watchlist(session["logged_in"], city, county, state, lat, longi)
-    return render_template("info.html", title = startDate + " to " + endDate, heading = startDate + " to " + endDate, logged_in = status)
+	status = "logged_in" in session
+	month = request.args["month"]
+	day = request.args["date"]
+	year = request.args["year"]
+	endDate = datetime(year, month, day)
+	startDate = date - timedelta(1)
+	try:
+		data = disaster.getDate(startDate, endDate)
+	except:
+		flash("Sorry, an error has occurred while retriving information.")
+		return redirect(url_for("home"))
+	return render_template("info.html", title = startDate + " to " + endDate, heading = startDate + " to " + endDate, logged_in = status)
 
 if __name__ == "__main__":
         app.debug = True
