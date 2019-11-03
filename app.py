@@ -77,7 +77,7 @@ def load_current():
 	except:
 		flash("Sorry, an error has occurred while retriving information.")
 		return redirect(url_for("home"))
-	return render_template("info.html", content = data, logged_in = status, title = "Today", heading = "Earthquakes from " + str(current))
+	return render_template("info.html", content = data, logged_in = status, title = "Today's Earthquakes", heading = "Earthquakes from " + str(current))
 
 # ================info================
 @app.route("/search")
@@ -99,6 +99,11 @@ def load_info():
 @app.route("/donate")
 def donate():
 	return render_template("donate.html", title = "Donate", heading = "Donate")
+
+# ================donate================
+@app.route("/partnerships")
+def partnership():
+	return render_template("/partnerships.html", title = "Our Partners", heading = "Our Partners")
 
 if __name__ == "__main__":
         app.debug = True
