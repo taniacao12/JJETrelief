@@ -104,7 +104,11 @@ def load_info():
 @app.route("/donate")
 def donate():
 	status = "logged_in" in session
-	return render_template("donate.html", title = "Donate", heading = "Donate", logged_in = status)
+	if status:
+		return render_template("donate.html", title = "Donate", heading = "Donate", logged_in = status)
+	else:
+		flash ("Please login to donate")
+		return render_template("login.html", title = "Login", heading = "Login")
 
 if __name__ == "__main__":
         app.debug = True
