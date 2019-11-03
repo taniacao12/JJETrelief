@@ -20,7 +20,7 @@ We learned how to use Github and how to set up a virtual environment. We went th
 
 ## Launch Instructions
 ### Install and run on localhost
-1. Go to [root repository](https://github.com/puneetjohal/ShrimpCrackers/) and click "Clone or Download" button
+1. Go to [root repository](https://github.com/taniacao12/JJETrelief) and click "Clone or Download" button
 2. Copy the ssh/https link and run `$ git clone <link>`
 3. Make sure the latest version of Python (currently Python 3.7.1) is installed. If not, download it [here](https://www.python.org/downloads/).
 4. Install virtualenv by running `$ pip install virtualenv`
