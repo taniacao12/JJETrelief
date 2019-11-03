@@ -1,0 +1,37 @@
+{% extends "parent.html" %}
+
+{% block content %}
+<div class="table-responsive">
+  <table class="table table-hover text-center" width="100%">
+    <thead>
+      <tr class="text-white" style="background-color: #8192d9;">
+        <th style="width:30%">Date of Donation</th>
+	      <th>Location</th>
+	      <th style="width:20%">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for each in watchlist %}
+      <tr>
+        <td><a href="/info?city={{each[0]}}&county={{each[1]}}&state={{each[2]}}&lat={{each[3]}}&long={{each[4]}}"> {{each[0]}}, {{each[2]}} </a></td>
+        <td>{{each[3]}}</td>
+        <td>{{each[4]}}</td>
+        <td>
+          <form action = "/change_wl">
+            <div class="form-group">
+              <button type="submit" class="btn btn-outline-secondary btn-sm" name = "update" value = "Remove from watchlist">Remove from Watchlist</button>
+              <input type="hidden" name="city" value="{{each[0]}}">
+              <input type="hidden" name="county" value="{{each[1]}}">
+              <input type="hidden" name="state" value={{each[2]}}>
+              <input type="hidden" name="lat" value={{each[3]}}>
+              <input type="hidden" name="long" value={{each[4]}}>
+              <input type="hidden" name="page" value="watchlist">
+	    </div>
+	  </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
