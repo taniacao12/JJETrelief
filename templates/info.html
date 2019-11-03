@@ -4,13 +4,13 @@
 
 {% for each in content%}
 <script>
-    var string = each;
-    string.split('-')
+    var each = each;
+    each.split('-')
 </script>
 
-location: {{string}}
+location: {{each[1]}}
 <br>
-magnitude: {{string}}
+magnitude: {{each[0]}}
 <br><br>
 {% endfor %}
 
