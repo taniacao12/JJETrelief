@@ -73,12 +73,13 @@ def load_current():
 	status = "logged_in" in session
 	current = date.today()
 	prev = current - timedelta(1)
+	nowDate = str(current).split("-")[1] + "/" + str(current).split("-")[2] + "/" + str(current).split("-")[0]
 	try:
 		data = disaster.getDate(prev, current)
 	except:
 		flash("Sorry, an error has occurred while retriving information.")
 		return redirect(url_for("home"))
-	return render_template("info.html", content = data, logged_in = status, title = "Today's Earthquakes", heading = "Earthquakes from " + str(current))
+	return render_template("info.html", content = data, logged_in = status, title = "Today's Earthquakes", heading = "Earthquakes from " + nowDate)
 
 # ================info================
 @app.route("/search")
