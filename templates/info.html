@@ -3,7 +3,8 @@
 {% block content %}
 
 {% for each in content%}
-each.split("-")
+var string = each 
+var res = string.split("-")
 location: {{each[1]}}
 <br>
 magnitude: {{each[0]}}
