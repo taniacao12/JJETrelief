@@ -3,11 +3,90 @@
 {% block content %}
 <div class="text-center">
 	<form class="form-inline" action = "/search">
-		<input class="form-control mr-sm-2" type="search" placeholder="Month" aria-label="Search" name="month">
+<!-- 		<input class="form-control mr-sm-2" type="search" placeholder="Month" aria-label="Search" name="month">
 		<input class="form-control mr-sm-2" type="search" placeholder="Day" aria-label="Search" name="day">
-		<input class="form-control mr-sm-2" type="search" placeholder="Year" aria-label="Search" name="year">
-		<button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+		<input class="form-control mr-sm-2" type="search" placeholder="Year" aria-label="Search" name="year"> -->
+</div>
+<div class="text-center">
+		<div class="dropdown">
+		  <!-- month button -->
+		  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Month
+		  </button>
+		  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		    <a class="dropdown-item" href="#" name=1>January</a>
+		    <a class="dropdown-item" href="#">February</a>
+		    <a class="dropdown-item" href="#">March</a>
+		    <a class="dropdown-item" href="#">April</a>
+		    <a class="dropdown-item" href="#">May</a>
+		    <a class="dropdown-item" href="#">June</a>
+		    <a class="dropdown-item" href="#">July</a>
+		    <a class="dropdown-item" href="#">August</a>
+		    <a class="dropdown-item" href="#">September</a>
+		    <a class="dropdown-item" href="#">October</a>
+		    <a class="dropdown-item" href="#">November</a>
+		    <a class="dropdown-item" href="#">December</a>
+		  </div>
+		  <!-- day button -->
+		  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Day
+		  </button>
+		  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		    <a class="dropdown-item" href="#">1</a>
+		    <a class="dropdown-item" href="#">2</a>
+		    <a class="dropdown-item" href="#">3</a>
+		    <a class="dropdown-item" href="#">4</a>
+		    <a class="dropdown-item" href="#">5</a>
+		    <a class="dropdown-item" href="#">6</a>
+		    <a class="dropdown-item" href="#">7</a>
+		    <a class="dropdown-item" href="#">8</a>
+		    <a class="dropdown-item" href="#">9</a>
+		    <a class="dropdown-item" href="#">10</a>
+		    <a class="dropdown-item" href="#">11</a>
+		    <a class="dropdown-item" href="#">12</a>
+		    <a class="dropdown-item" href="#">13</a>
+		    <a class="dropdown-item" href="#">14</a>
+		    <a class="dropdown-item" href="#">15</a>
+		    <a class="dropdown-item" href="#">16</a>
+		    <a class="dropdown-item" href="#">17</a>
+		    <a class="dropdown-item" href="#">18</a>
+		    <a class="dropdown-item" href="#">19</a>
+		    <a class="dropdown-item" href="#">20</a>
+		    <a class="dropdown-item" href="#">21</a>
+		    <a class="dropdown-item" href="#">22</a>
+		    <a class="dropdown-item" href="#">23</a>
+		    <a class="dropdown-item" href="#">24</a>
+		    <a class="dropdown-item" href="#">25</a>
+		    <a class="dropdown-item" href="#">26</a>
+		    <a class="dropdown-item" href="#">27</a>
+		    <a class="dropdown-item" href="#">28</a>
+		    <a class="dropdown-item" href="#">29</a>
+		    <a class="dropdown-item" href="#">30</a>
+		    <a class="dropdown-item" href="#">31</a>
+		  </div>
+		  <!-- year button -->
+		  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Year
+		  </button>
+		  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		    <a class="dropdown-item" href="#">January</a>
+		    <a class="dropdown-item" href="#">February</a>
+		    <a class="dropdown-item" href="#">March</a>
+		    <a class="dropdown-item" href="#">April</a>
+		    <a class="dropdown-item" href="#">May</a>
+		    <a class="dropdown-item" href="#">June</a>
+		    <a class="dropdown-item" href="#">July</a>
+		    <a class="dropdown-item" href="#">August</a>
+		    <a class="dropdown-item" href="#">September</a>
+		    <a class="dropdown-item" href="#">October</a>
+		    <a class="dropdown-item" href="#">November</a>
+		    <a class="dropdown-item" href="#">December</a>
+		  </div>
+		</div>
+		  <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+		
 	</form>
   <h4>qwertyuiop</h4>
 </div>
+
 {% endblock %}
