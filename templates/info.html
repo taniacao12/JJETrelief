@@ -37,7 +37,7 @@
         {% for each in order %}
         <tr>
             <th> {{ each }} </th>
-            <td> {{ order[each][0] }} </td>
+            <td> {{content.get(each)}} </td>
         </tr>
         {% endfor %}
       </tbody>
