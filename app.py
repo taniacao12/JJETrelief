@@ -77,7 +77,7 @@ def load_current():
 	except:
 		flash("Sorry, an error has occurred while retriving information.")
 		return redirect(url_for("home"))
-	return render_template("info.html", content = data, logged_in = status)
+	return render_template("info.html", content = data, logged_in = status, title = "Today")
 
 # ================info================
 @app.route("/search")

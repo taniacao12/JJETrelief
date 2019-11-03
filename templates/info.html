@@ -8,21 +8,32 @@
     }
 </style>
 
-{% for each in content%}
+<div class="table-responsive">
+  <table class="table table-hover text-center" width="100%">
+      <thead>
+        <tr class="bg-dark text-white">
+            <th>Location</th>
+            <th>Magnitude</th>
+        </tr>
+      </thead>
+    <tbody>
+      {% for each in content %}
+      <tr>
+        <td>{{ each }}</td>
+        <td> {{content.get(each)}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<!-- {% for each in content%}
 <b>Location:</b> {{each}}
 <br>
 <b>Magnitude:</b> {{content.get(each)}}
 <br><br>
 
 <div class="table-responsive">
-    <table class="table table-hover text-center" width="100%">
-      <thead>
-        <tr class="bg-danger text-white">
-            <th>Location</th>
-            <th>Magnitude</th>
-        </tr>
-      </thead>
-      <tbody>
         {% for each in order %}
         <tr>
             <th> {{ each }} </th>
@@ -32,4 +43,5 @@
       </tbody>
     </table>
   </div>
+  {% endfor %} -->
 {% endblock %}
