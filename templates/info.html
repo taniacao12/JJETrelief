@@ -2,7 +2,11 @@
 
 {% block content %}
 
-{{content}}
+{% for each in content%}
+location: {{each}}
 <br>
+magnitude: {{each}}
+<br><br>
+{% endfor %}
 
 {% endblock %}
