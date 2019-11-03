@@ -111,6 +111,12 @@ def donate():
 def partnership():
 	return render_template("/partnerships.html", title = "Our Partners", heading = "Our Partners")
 
+# ================my donations================
+@app.route("/mydonations")
+def mydonations():
+	status = "logged_in" in session
+	return render_template("/mydonations.html", title = "My Donations", heading = session["logged_in"] + "'s Donations", logged_in = status)
+
 if __name__ == "__main__":
         app.debug = True
         app.run()
