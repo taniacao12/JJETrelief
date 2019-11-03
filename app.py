@@ -73,13 +73,13 @@ def load_current():
 	status = "logged_in" in session
 	current = date.today()
 	prev = current - timedelta(1)
-	nowDate = str(current).split("-")[1] + "/" + str(current).split("-")[2] + "/" + str(current).split("-")[0]
+	d = current.strftime("%x")
 	try:
 		data = disaster.getDate(prev, current)
 	except:
 		flash("Sorry, an error has occurred while retrieving information.")
 		return redirect(url_for("home"))
-	return render_template("info.html", content = data, logged_in = status, title = "Today's Earthquakes", heading = "Earthquakes from " + nowDate)
+	return render_template("info.html", date = current, content = data, logged_in = status, title = "Today's Earthquakes", heading = "Earthquakes from " + d)
 
 # ================info================
 @app.route("/search")
@@ -98,7 +98,6 @@ def load_info():
 	except:
 		flash("Sorry, an error has occurred while retrieving information.")
 		return redirect(url_for("home"))
-	print(endDate)
 	return render_template("info.html", title = "Earthquakes from " + endDate, heading = "Earthquakes from " + endDate, date = endDate, content = data, logged_in = status)
 
 # ================donate================
@@ -106,11 +105,16 @@ def load_info():
 def donate():
 	status = "logged_in" in session
 	if status:
+<<<<<<< HEAD
 		date = "On " + request.args["date"]
 		if date == "On ": date = "Today"
+=======
+		date = request.args["d"]
+		d = date.strftime("%x")
+>>>>>>> ad4b2c421eeb618821fdb6e9a672a71fa5e58ee9
 		place = request.args["place"]
 		mag = request.args["mag"]
-		return render_template("donate.html", title = "Donate", heading = "Donate", date = date, place = place, mag = mag, logged_in = status)
+		return render_template("donate.html", title = "Donate", heading = "Donate", date = date, d = d, place = place, mag = mag, logged_in = status)
 	else:
 		flash ("Please login to donate")
 		return render_template("login.html", title = "Login", heading = "Login")
@@ -120,7 +124,6 @@ def getDonations():
 	status = "logged_in" in session
 	if status:
 		data = db.get_donations(session["logged_in"])
-		#print(locations)
 		return render_template("donations.html", title = "Donations", heading = "Donations", content = data, logged_in = status)
 	else:
 		flash ("Please login to view Watchlist")
@@ -128,18 +131,15 @@ def getDonations():
 
 @app.route("/change_donations", methods = ["GET", "POST"])
 def change_donations():
-	try:
+	#try:
 		place = request.args["place"]
 		mag = request.args["mag"]
 		amt = request.args["amount"]
-		print(place)
-		print(mag)
-		print(amt)
 		db.add_donations(session["logged_in"], place, mag, amt)
-	except:
-		flash("failed to add location to database")
-	date = request.args["date"]
-	return redirect(url_for("load_info", date = date))
+	#except:
+		#flash("failed to add location to database")
+		date = request.args["date"]
+		return redirect(url_for("load_info", date = date))
 
 # ================partnerships================
 @app.route("/partnerships")

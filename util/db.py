@@ -4,11 +4,11 @@ import os
 DIR = os.path.dirname(__file__) or '.'
 DIR += '/../'
 
-DB_FILE = DIR + "data/watchlist.db"
+DB_FILE = DIR + "data/donations.db"
 
 # ==================== Init ====================
 def create_tables():
-    """Creates tables for users' account info and watchlist."""
+    """Creates tables for users' account info and donations."""
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
     command = "CREATE TABLE user_info (username TEXT, password TEXT)"
@@ -55,13 +55,13 @@ def user_exist(username):
     db.close()
     return False
 
-# ==================== Watchlist ====================
+# ==================== donations ====================
 def check_donations(user, place, mag, amt):
-    """Check to see if the user already has the city in the watchlist."""
+    """Check to see if the user already has the city in the donations."""
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
-    for each in c.execute("SELECT * FROM watchlist WHERE username =? ", (user,)):
+    for each in c.execute("SELECT * FROM donations WHERE username =? ", (user,)):
         if(each[1] == place and each[2] == mag and each[3] == amt):
             print("already in wl")
             db.close()
@@ -71,23 +71,23 @@ def check_donations(user, place, mag, amt):
     return False
 
 def add_donations(user, place, mag, amt):
-    """Insert a new watchlist city into the db for a user's watchlist."""
+    """Insert a new  city into the db for a user's donations."""
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
-    if (not check_watchlist(user, place, mag, amt)):
-        c.execute("INSERT INTO watchlist VALUES(?, ?, ?, ?)", (user, place, mag, amt))
+    if (not check_donations(user, place, mag, amt)):
+        c.execute("INSERT INTO donations VALUES(?, ?, ?, ?)", (user, place, mag, amt))
 
     db.commit()
     db.close()
 
 def get_donations(user):
-    """Get all the watchlist city for the user."""
+    """Get all the donations city for the user."""
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
     data = []
-    for each in c.execute("SELECT * FROM watchlist WHERE username =?", (user,)):
+    for each in c.execute("SELECT * FROM donations WHERE username =?", (user,)):
         # print (each)
         temp = []
         for i in range (1,len(each)):
@@ -98,10 +98,10 @@ def get_donations(user):
     return data
 
 # create_tables()
-# add_watchlist("joyce","gz",30,20)
-# add_watchlist("joyce","gz",20,30)
-# add_watchlist("joyce","gz",20,30)
-# add_watchlist("puneet","ny",10,10)
-# add_watchlist("joyce","tx",30,30)
-# remove_watchlist("joyce", "gz",30,20)
-# print(get_watchlist("joyce"))
+# add_donations("joyce","gz",30,20)
+# add_donations("joyce","gz",20,30)
+# add_donations("joyce","gz",20,30)
+# add_donations("puneet","ny",10,10)
+# add_donations("joyce","tx",30,30)
+# remove_donations("joyce", "gz",30,20)
+# print(get_donations("joyce"))
