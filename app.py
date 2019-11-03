@@ -81,7 +81,7 @@ def load_current():
 	except:
 		flash("Sorry, an error has occurred while retrieving information.")
 		return redirect(url_for("home"))
-	return render_template("info.html", display = display, date = current, content = data, logged_in = status, title = "Today's Earthquakes", heading = "Earthquakes from " + d)
+	return render_template("info.html", display = display, d = d, date = current, content = data, logged_in = status, title = "Today's Earthquakes", heading = "Today's Earthquakes")
 
 # ================info================
 @app.route("/search")
@@ -89,8 +89,7 @@ def load_info():
 	status = "logged_in" in session
 	date = request.args["date"].split('-')
 	if (date == ['']):
-		flash ("Please enter a date")
-		return render_template("home.html", title = "Try Again", heading = "Please Try Again", logged_in=status)
+		return render_template("home.html", logged_in=status)
 	endDate = datetime(int(date[0]), int(date[1]), int(date[2]))
 	startDate = endDate - timedelta(1)
 	date = endDate.strftime("%Y-%m-%d")
