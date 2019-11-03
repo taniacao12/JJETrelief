@@ -4,8 +4,8 @@
 Tania Cao, Joyce Fang, Jody Sunray, Elaine Shi
 
 ## Project Overview
-Send help. Get help.
-JJETrelief focuses on underrepresented communities affected by natural disasters all over the world. The website updates the status of these communities in real time and gives you the option to donate money or join any pre-existing volunteer groups. You may also customize what you wish to see based on disaster type, magnitude of damage, location, types of aid, etc.
+Send help. Get help.  
+JJETrelief focuses on underrepresented communities affected by natural disasters all over the world. The website updates the status of these communities in real time and gives you the option to donate money if you wish. You may also customize what you wish to see based on the date.
 
 ### Launch Instructions
 #### Install and run on localhost
