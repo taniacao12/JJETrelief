@@ -5,6 +5,7 @@ from util import db, disaster
 from datetime import datetime, date, timedelta
 
 app = Flask(__name__)
+app.secret_key = "super secret key"
 
 @app.route("/")
 def home():
@@ -83,11 +84,11 @@ def load_current():
 @app.route("/search")
 def load_info():
 	status = "logged_in" in session
-	month = int(request.args["month"])
-	day = int(request.args["day"])
-	year = int(request.args["year"])
-	endDate = datetime(year, month, day)
+	date = request.args["date"].split('-')
+	endDate = datetime(int(date[0]), int(date[1]), int(date[2]))
 	startDate = endDate - timedelta(1)
+	endDate = endDate.strftime("%x")
+	startDate = startDate.strftime("%x")
 	try:
 		data = disaster.getDate(startDate, endDate)
 	except:
