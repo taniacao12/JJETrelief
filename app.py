@@ -77,7 +77,7 @@ def load_current():
 	try:
 		data = disaster.getDate(prev, current)
 	except:
-		flash("Sorry, an error has occurred while retriving information.")
+		flash("Sorry, an error has occurred while retrieving information.")
 		return redirect(url_for("home"))
 	return render_template("info.html", content = data, logged_in = status, title = "Today's Earthquakes", heading = "Earthquakes from " + nowDate)
 
@@ -96,7 +96,7 @@ def load_info():
 	try:
 		data = disaster.getDate(startDate, endDate)
 	except:
-		flash("Sorry, an error has occurred while retriving information.")
+		flash("Sorry, an error has occurred while retrieving information.")
 		return redirect(url_for("home"))
 	print(endDate)
 	return render_template("info.html", title = "Earthquakes from " + endDate, heading = "Earthquakes from " + endDate, date = endDate, content = data, logged_in = status)
@@ -106,7 +106,8 @@ def load_info():
 def donate():
 	status = "logged_in" in session
 	if status:
-		date = request.args["date"]
+		date = "On " + request.args["date"]
+		if date == "On ": date = "Today"
 		place = request.args["place"]
 		mag = request.args["mag"]
 		return render_template("donate.html", title = "Donate", heading = "Donate", date = date, place = place, mag = mag, logged_in = status)
