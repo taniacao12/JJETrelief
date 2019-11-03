@@ -110,6 +110,11 @@ def donate():
 	status = "logged_in" in session
 	return render_template("donate.html", title = "Donate", heading = "Donate", logged_in = status)
 
+# ================partnerships================
+@app.route("/partnerships")
+def partnership():
+	return render_template("/partnerships.html", title = "Our Partners", heading = "Our Partners")
+
 if __name__ == "__main__":
         app.debug = True
         app.run()
