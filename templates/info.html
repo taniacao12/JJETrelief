@@ -3,9 +3,9 @@
 {% block content %}
 
 {% for each in content%}
-Location: {{each}}
+<b>Location:</b> {{each}}
 <br>
-Magnitude: {{content.get(each)}}
+<b>Magnitude:</b> {{content.get(each)}}
 <br><br>
 {% endfor %}
 
