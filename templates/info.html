@@ -11,19 +11,13 @@
             <th style="width:20%">Make a Donation</th>
         </tr>
       </thead>
-<<<<<<< HEAD
     <tbody>
-      <!-- {{date}} -->
-=======
-      {{date}}
-    <tbody>
->>>>>>> ad4b2c421eeb618821fdb6e9a672a71fa5e58ee9
       {% for each in content %}
       <tr>
         <td><div align="left">{{ each }}</div></td>
         <td> {{content.get(each)}}</td>
         <td>$0.00</td>
-        <td><a style="background-color:lightblue" class="btn btn-sm btn-outline-dark" href="/donate?d={{date}}&place={{each}}&mag={{content.get(each)}}" role="button">Donate</a></td>
+        <td><a style="background-color:lightblue" class="btn btn-sm btn-outline-dark" href="/donate?date={{date}}&d={{d}}&place={{each}}&mag={{content.get(each)}}" role="button">Donate</a></td>
       </tr>
       {% endfor %}
     </tbody>

@@ -62,7 +62,7 @@ def check_donations(user, place, mag, amt):
     c = db.cursor()
 
     for each in c.execute("SELECT * FROM donations WHERE username =? ", (user,)):
-        if(each[1] == place and each[2] == mag and each[3] == amt):
+        if(each[1] == place and each[2] == mag):
             print("already in wl")
             db.close()
             return True
@@ -88,7 +88,6 @@ def get_donations(user):
 
     data = []
     for each in c.execute("SELECT * FROM donations WHERE username =?", (user,)):
-        # print (each)
         temp = []
         for i in range (1,len(each)):
             temp.append(each[i])

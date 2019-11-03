@@ -1,23 +1,16 @@
 {% extends "parent.html" %}
 
 {% block content %}
-<<<<<<< HEAD
 <div align="center">
 	<div style="padding:15px;width:70%;"><img src="https://www.eco-business.com/media/_versions/ebmedia/fileuploads/35187948663_b5fad89b4f_k_news_featured.jpg" class="img-fluid" style="border:black 2px solid;"><br>
-	Thank you for choosing to donate to the people of {{place}}. {{date}}, they suffered an earthquake of magnitude {{mag}}.<br><br>
+	Thank you for choosing to donate to the people of {{place}}. {{d}}, they suffered an earthquake of magnitude {{mag}}.<br><br>
 	How much will you donate?<br>
-=======
-<div align="center" style="padding:15px"><img src="https://www.eco-business.com/media/_versions/ebmedia/fileuploads/35187948663_b5fad89b4f_k_news_featured.jpg" class="img-fluid" style="border:black 2px solid;width:70%"><br>
-	{{place}}<br>
-	{{mag}}<br>
-	{{d}}
-	How much will you donate?
->>>>>>> ad4b2c421eeb618821fdb6e9a672a71fa5e58ee9
 	<form action = "/change_donations">
 	<div class="form-group">
 		<input type="hidden" name="place" value="{{place}}">
 		<input type="hidden" name="mag" value="{{mag}}">
 		<input type="hidden" name="date" value="{{date}}">
+		<input type="hidden" name="d" value="{{d}}">
 		<input type="number" min="0.00" name="amount" class="form-control col-sm-5" placeholder=$100.00 step="0.01">
 		<input style="margin:10px" type="submit" value="Enter" role="button" class="btn btn-outline-dark">
 	</div>

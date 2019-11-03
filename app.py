@@ -73,7 +73,8 @@ def load_current():
 	status = "logged_in" in session
 	current = date.today()
 	prev = current - timedelta(1)
-	d = current.strftime("%x")
+	d = current.strftime("%Y-%m-%d")
+	prev = prev.strftime("%Y-%m-%d")
 	try:
 		data = disaster.getDate(prev, current)
 	except:
@@ -91,27 +92,22 @@ def load_info():
 		return render_template("home.html", title = "Try Again", heading = "Please Try Again", logged_in=status)
 	endDate = datetime(int(date[0]), int(date[1]), int(date[2]))
 	startDate = endDate - timedelta(1)
-	endDate = endDate.strftime("%x")
-	startDate = startDate.strftime("%x")
+	date = endDate.strftime("%Y-%m-%d")
+	startDate = startDate.strftime("%Y-%m-%d")
 	try:
-		data = disaster.getDate(startDate, endDate)
+		data = disaster.getDate(startDate, date)
 	except:
 		flash("Sorry, an error has occurred while retrieving information.")
 		return redirect(url_for("home"))
-	return render_template("info.html", title = "Earthquakes from " + endDate, heading = "Earthquakes from " + endDate, date = endDate, content = data, logged_in = status)
+	return render_template("info.html", title = "Earthquakes from " + date, heading = "Earthquakes from " + date, date = endDate, d = date, content = data, logged_in = status)
 
 # ================donate================
 @app.route("/donate")
 def donate():
 	status = "logged_in" in session
 	if status:
-<<<<<<< HEAD
-		date = "On " + request.args["date"]
-		if date == "On ": date = "Today"
-=======
-		date = request.args["d"]
-		d = date.strftime("%x")
->>>>>>> ad4b2c421eeb618821fdb6e9a672a71fa5e58ee9
+		date = request.args["date"]
+		d = request.args["d"]
 		place = request.args["place"]
 		mag = request.args["mag"]
 		return render_template("donate.html", title = "Donate", heading = "Donate", date = date, d = d, place = place, mag = mag, logged_in = status)
@@ -131,15 +127,15 @@ def getDonations():
 
 @app.route("/change_donations", methods = ["GET", "POST"])
 def change_donations():
-	#try:
+	try:
 		place = request.args["place"]
 		mag = request.args["mag"]
 		amt = request.args["amount"]
 		db.add_donations(session["logged_in"], place, mag, amt)
-	#except:
-		#flash("failed to add location to database")
-		date = request.args["date"]
-		return redirect(url_for("load_info", date = date))
+	except:
+		flash("failed to add location to database")
+	date = request.args["d"]
+	return redirect(url_for("load_info", date = date))
 
 # ================partnerships================
 @app.route("/partnerships")
