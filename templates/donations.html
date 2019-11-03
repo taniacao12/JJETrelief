@@ -5,17 +5,15 @@
   <table class="table table-hover text-center" width="100%">
     <thead>
       <tr class="text-white" style="background-color: #8192d9;">
-        <th style="width:30%">Date of Donation</th>
-	      <th>Location</th>
-	      <th style="width:20%">Amount</th>
+        <th style="width:20%">Amount Donated</th>
+	      <th>Who You Donated To</th>
       </tr>
     </thead>
     <tbody>
       {% for each in content %}
       <tr>
-        <td>{{each[0]}}</td>
-        <td>{{each[1]}}</td>
         <td>{{each[2]}}</td>
+        <td>{{each[0][each[0].index("of")+3:]}}</td>
       </tr>
       {% endfor %}
     </tbody>
