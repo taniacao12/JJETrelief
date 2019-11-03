@@ -2,7 +2,9 @@
 
 {% block content %}
 
-{{content}}
+{% for each in content%}
+{{each}}
 <br>
+{% endfor %}
 
 {% endblock %}
