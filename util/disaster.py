@@ -21,12 +21,6 @@ def getDate(start, end):
         ret_dict[each['properties']['title']] = each['properties']['mag']
     return ret_dict
 
-# city_list = getcitylist()
-# print((city_list))
-
-# with open("city.json", 'w') as outfile:
-#     json.dump(city_list, outfile)
-
 # def getcityid(city, state):
 #     print("getting city id for", city)
 #     with open (DIR + "data/city.json", "r") as cities:
