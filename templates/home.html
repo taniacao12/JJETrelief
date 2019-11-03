@@ -2,6 +2,12 @@
 
 {% block content %}
 <div class="text-center">
+	<form class="form-inline" action = "/search">
+		<input class="form-control mr-sm-2" type="search" placeholder="Month" aria-label="Search" name="month">
+		<input class="form-control mr-sm-2" type="search" placeholder="Day" aria-label="Search" name="day">
+		<input class="form-control mr-sm-2" type="search" placeholder="Year" aria-label="Search" name="year">
+		<button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+	</form>
   <h4>qwertyuiop</h4>
 </div>
 {% endblock %}
