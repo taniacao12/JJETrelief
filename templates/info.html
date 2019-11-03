@@ -3,14 +3,9 @@
 {% block content %}
 
 {% for each in content%}
-<script>
-    var string = each;
-    string.split('-')
-</script>
-
-location: {{string}}
+location: {{each}}
 <br>
-magnitude: {{string}}
+magnitude: {{each}}
 <br><br>
 {% endfor %}
 
