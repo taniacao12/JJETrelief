@@ -3,20 +3,9 @@
 {% block content %}
 
 {% for each in content%}
-<<<<<<< HEAD
 location: {{each}}
 <br>
-magnitude: {{each}}
-=======
-<script>
-    var each = each;
-    each.split('-')
-</script>
-
-location: {{each[1]}}
-<br>
-magnitude: {{each[0]}}
->>>>>>> 7e49229076f8d455c1e4b4aea6bf25b5c99a2ef3
+magnitude: {{content.get(each)}}
 <br><br>
 {% endfor %}
 
