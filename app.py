@@ -79,7 +79,7 @@ def load_current():
 	try:
 		data = disaster.getDate(prev, current)
 		for each in data:
-			data[each].append(db.get_funding(each))
+			data[each].append(format(db.get_funding(each), '.2f'))
 	except:
 		flash("Sorry, an error has occurred while retrieving information.")
 		return redirect(url_for("home"))
