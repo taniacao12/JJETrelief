@@ -5,7 +5,7 @@
 {% for each in content%}
 location: {{each}}
 <br>
-magnitude: {{each}}
+magnitude: {{content.get(each)}}
 <br><br>
 {% endfor %}
 
