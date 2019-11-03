@@ -14,7 +14,7 @@ def create_tables():
     command = "CREATE TABLE user_info (username TEXT, password TEXT)"
     c.execute(command)
 
-    command = "CREATE TABLE watchlist (username TEXT, city TEXT, county TEXT, state TEXT, latitude FLOAT, longitude FLOAT)"
+    command = "CREATE TABLE donations (username TEXT, place TEXT, mag INT, donation FLOAT)"
     c.execute(command)
 
     db.commit() #save changes
@@ -56,13 +56,13 @@ def user_exist(username):
     return False
 
 # ==================== Watchlist ====================
-def check_watchlist(user, city, county, state, lat, longi):
+def check_donations(user, place, mag, amt):
     """Check to see if the user already has the city in the watchlist."""
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
     for each in c.execute("SELECT * FROM watchlist WHERE username =? ", (user,)):
-        if(each[1] == city and each[2] == county and each[3] == state and str(each[4]) == lat and str(each[5]) == longi):
+        if(each[1] == place and each[2] == mag and each[3] == amt):
             print("already in wl")
             db.close()
             return True
@@ -70,42 +70,32 @@ def check_watchlist(user, city, county, state, lat, longi):
     db.close()
     return False
 
-def add_watchlist(user, new_city, new_county, new_state, new_lat, new_long):
+def add_donations(user, place, mag, amt):
     """Insert a new watchlist city into the db for a user's watchlist."""
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
-    if (not check_watchlist(user, new_city, new_county, new_state, new_lat, new_long)):
-        c.execute("INSERT INTO watchlist VALUES(?, ?, ?, ?, ?, ?)", (user, new_city, new_county, new_state, new_lat, new_long))
+    if (not check_watchlist(user, place, mag, amt)):
+        c.execute("INSERT INTO watchlist VALUES(?, ?, ?, ?)", (user, place, mag, amt))
 
     db.commit()
     db.close()
 
-def remove_watchlist(user, rmv_city, rmv_county, rmv_state, lat, longi):
-    """Remove @rmv_city from the watchlist for user."""
-    db = sqlite3.connect(DB_FILE)
-    c = db.cursor()
-
-    c.execute("DELETE FROM watchlist WHERE username =? and city =? and county=? and state =? and latitude=? and longitude=?", (user, rmv_city, rmv_county, rmv_state, lat, longi))
-
-    db.commit()
-    db.close()
-
-def get_watchlist(user):
+def get_donations(user):
     """Get all the watchlist city for the user."""
     db = sqlite3.connect(DB_FILE)
     c = db.cursor()
 
-    watchlist_data = []
+    data = []
     for each in c.execute("SELECT * FROM watchlist WHERE username =?", (user,)):
         # print (each)
         temp = []
         for i in range (1,len(each)):
             temp.append(each[i])
-        watchlist_data.append(temp)
+        data.append(temp)
 
     db.close()
-    return watchlist_data
+    return data
 
 # create_tables()
 # add_watchlist("joyce","gz",30,20)
