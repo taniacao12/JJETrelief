@@ -78,13 +78,17 @@ def load_current():
 	except:
 		flash("Sorry, an error has occurred while retriving information.")
 		return redirect(url_for("home"))
-	return render_template("info.html", content = data, logged_in = status, title = "Today", heading = "Earthquakes from " + str(current))
+	return render_template("info.html", title = "Today", heading = "Earthquakes from " + str(current), content = data, logged_in = status)
 
 # ================info================
 @app.route("/search")
 def load_info():
 	status = "logged_in" in session
 	date = request.args["date"].split('-')
+	print(date)
+	if (date == ['']):
+		flash ("Please enter a date")
+		return render_template("home.html", title = "Try Again", heading = "Please Try Again", logged_in=status)
 	endDate = datetime(int(date[0]), int(date[1]), int(date[2]))
 	startDate = endDate - timedelta(1)
 	endDate = endDate.strftime("%x")
@@ -94,12 +98,13 @@ def load_info():
 	except:
 		flash("Sorry, an error has occurred while retriving information.")
 		return redirect(url_for("home"))
-	return render_template("info.html", content = data, logged_in = status)
+	return render_template("info.html", title = "Earthquakes from " + endDate, heading = "Earthquakes from " + endDate, content = data, logged_in = status)
 
 # ================donate================
 @app.route("/donate")
 def donate():
-	return render_template("donate.html", title = "Donate", heading = "Donate")
+	status = "logged_in" in session
+	return render_template("donate.html", title = "Donate", heading = "Donate", logged_in = status)
 
 if __name__ == "__main__":
         app.debug = True
