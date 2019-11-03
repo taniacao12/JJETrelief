@@ -91,6 +91,7 @@ def load_info():
 	status = "logged_in" in session
 	date = request.args["date"].split('-')
 	if (date == ['']):
+		flash("Please enter a date.")
 		return render_template("home.html", logged_in=status)
 	endDate = datetime(int(date[0]), int(date[1]), int(date[2]))
 	startDate = endDate - timedelta(1)
