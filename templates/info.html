@@ -7,6 +7,23 @@ Location: {{each}}
 <br>
 Magnitude: {{content.get(each)}}
 <br><br>
-{% endfor %}
 
+<div class="table-responsive">
+    <table class="table table-hover text-center" width="100%">
+      <thead>
+        <tr class="bg-danger text-white">
+            <th>Location</th>
+            <th>Magnitude</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for each in order %}
+        <tr>
+            <th> {{ each }} </th>
+            <td> {{ order[each][0] }} </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 {% endblock %}
