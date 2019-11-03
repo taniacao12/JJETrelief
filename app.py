@@ -124,7 +124,8 @@ def getDonations():
 # ================partnerships================
 @app.route("/partnerships")
 def partnership():
-	return render_template("/partnerships.html", title = "Our Partners", heading = "Our Partners")
+	status = "logged_in" in session
+	return render_template("/partnerships.html", title = "Our Partners", heading = "Our Partners", logged_in = status)
 
 # ================my donations================
 @app.route("/mydonations")
